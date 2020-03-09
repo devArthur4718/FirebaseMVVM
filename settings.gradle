@@ -1,0 +1,2 @@
+rootProject.name='ENFTEC'
+include ':app'
