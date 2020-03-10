@@ -1,4 +1,4 @@
-package com.example.enftec
+package com.example.enftec.core
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.example.enftec.MainViewModel
+import androidx.lifecycle.Observer
+import com.example.enftec.core.MainViewModel
 import com.example.enftec.R
+import com.example.enftec.data.TopicAdapter
 import com.example.enftec.databinding.HomeFragmentBinding
 
 class Home : Fragment() {
@@ -16,7 +18,6 @@ class Home : Fragment() {
     companion object{
         fun newInstance() = Home()
     }
-
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var viewModel: HomeViewModel
@@ -32,14 +33,21 @@ class Home : Fragment() {
             container,
             false
         )
-
-
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         setObservables()
         return binding.root
     }
 
     private fun setObservables() {
+        viewModel.itemList.observe(viewLifecycleOwner, Observer { topicList ->
+            showTopics(topicList)
+        })
+    }
 
+    private fun showTopics(topicList: List<String>) {
+        val adapter = TopicAdapter()
+        adapter.data = topicList
+        binding.rvTopics.adapter = adapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -48,7 +56,5 @@ class Home : Fragment() {
              mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         } ?: throw  Throwable("Invalid activity")
         mainViewModel.updateActionBarTitle("Tópicos")
-
     }
-
 }

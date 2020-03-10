@@ -1,9 +1,10 @@
-package com.example.enftec
+package com.example.enftec.core
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.enftec.R
 
 class MainActivity : AppCompatActivity() {
 
