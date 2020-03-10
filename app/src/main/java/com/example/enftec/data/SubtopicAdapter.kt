@@ -2,12 +2,11 @@ package com.example.enftec.data
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enftec.R
 import com.example.enftec.databinding.ItemSubtopicBinding
-import com.example.enftec.databinding.ItemTopicBinding
+
 
 //* Created by Arthur Gomes at 09/03/20 21:46 - contact me at devarthur4718@gmail.com.br
 class SubtopicAdapter: RecyclerView.Adapter<SubtopicAdapter.ViewHolder>() {
@@ -37,7 +36,7 @@ class SubtopicAdapter: RecyclerView.Adapter<SubtopicAdapter.ViewHolder>() {
         fun bind(item : String){
             binding.tvSubtopic.text = item
             binding.itemContainer.setOnClickListener {
-
+                itemView.findNavController().navigate(R.id.action_topicDetail_to_content2)
             }
         }
         companion object {
