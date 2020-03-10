@@ -7,7 +7,20 @@
 
     <fragment
         android:id="@+id/home2"
-        android:name="com.example.enftec.ui.Home"
+        android:name="com.example.enftec.ui.home.Home"
         android:label="Tópicos"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_home2_to_topicDetail"
+            app:destination="@id/topicDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicDetail"
+        android:name="com.example.enftec.ui.topic.TopicDetail"
+        android:label="topic_detail_fragment"
+        tools:layout="@layout/topic_detail_fragment" >
+        <argument
+            android:name="topicArg"
+            app:argType="string" />
+    </fragment>
 </navigation>

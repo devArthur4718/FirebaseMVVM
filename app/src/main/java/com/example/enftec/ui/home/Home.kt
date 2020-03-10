@@ -1,25 +1,24 @@
-package com.example.enftec.ui
+package com.example.enftec.ui.home
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import com.example.enftec.core.MainViewModel
+import androidx.lifecycle.ViewModelProviders
 import com.example.enftec.R
+import com.example.enftec.core.BaseFragment
 import com.example.enftec.data.TopicAdapter
 import com.example.enftec.databinding.HomeFragmentBinding
 
-class Home : Fragment() {
+class Home : BaseFragment() {
 
     companion object{
         fun newInstance() = Home()
     }
 
-    private lateinit var mainViewModel: MainViewModel
+
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
 
@@ -52,9 +51,6 @@ class Home : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        activity?.run {
-             mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        } ?: throw  Throwable("Invalid activity")
         mainViewModel.updateActionBarTitle("Tópicos")
     }
 }

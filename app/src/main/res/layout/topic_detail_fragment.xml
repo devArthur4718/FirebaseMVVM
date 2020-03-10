@@ -10,16 +10,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.home.Home">
+        tools:context=".ui.topic.TopicDetail">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTopics"
+            android:id="@+id/rvSubTopics"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_topic"
             />
+
+
 
 
 

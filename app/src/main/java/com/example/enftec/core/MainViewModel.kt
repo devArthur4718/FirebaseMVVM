@@ -13,4 +13,5 @@ class MainViewModel : ViewModel(){
     fun updateActionBarTitle(title : String) {
         _title.postValue(title)
     }
+
 }

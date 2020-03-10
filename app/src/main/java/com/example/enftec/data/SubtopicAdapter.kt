@@ -6,10 +6,11 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enftec.R
+import com.example.enftec.databinding.ItemSubtopicBinding
 import com.example.enftec.databinding.ItemTopicBinding
 
 //* Created by Arthur Gomes at 09/03/20 21:46 - contact me at devarthur4718@gmail.com.br
-class TopicAdapter: RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
+class SubtopicAdapter: RecyclerView.Adapter<SubtopicAdapter.ViewHolder>() {
 
     var data = listOf<String>()
         set(value){
@@ -17,7 +18,7 @@ class TopicAdapter: RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopicAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubtopicAdapter.ViewHolder {
         return ViewHolder.from(
             parent
         )
@@ -25,25 +26,24 @@ class TopicAdapter: RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int  = data.size
 
-    override fun onBindViewHolder(holder: TopicAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SubtopicAdapter.ViewHolder, position: Int) {
         val topicItem : String = data[position]
         holder.bind(topicItem)
     }
 
-    class ViewHolder private constructor(val binding : ItemTopicBinding)
+    class ViewHolder private constructor(val binding : ItemSubtopicBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item : String){
-            binding.tvTopic.text = item
+            binding.tvSubtopic.text = item
             binding.itemContainer.setOnClickListener {
-                val bundle = bundleOf("topicArg" to item)
-                itemView.findNavController().navigate(R.id.action_home2_to_topicDetail, bundle)
+
             }
         }
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInfalter = LayoutInflater.from(parent.context)
-                val binding = ItemTopicBinding.inflate(layoutInfalter,parent,false)
+                val binding = ItemSubtopicBinding.inflate(layoutInfalter,parent,false)
                 return ViewHolder(
                     binding
                 )

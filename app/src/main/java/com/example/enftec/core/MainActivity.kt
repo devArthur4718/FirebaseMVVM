@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.example.enftec.R
 
 class MainActivity : AppCompatActivity() {
@@ -21,5 +22,11 @@ class MainActivity : AppCompatActivity() {
         viewModel.title.observe(this, Observer { customTitle ->
             supportActionBar?.title = customTitle
         })
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = this.findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp()
     }
 }
