@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ENFTEC</string>
+    <string name="topic">Tópico</string>
+    <string name="open_topic">open topic</string>
 </resources>

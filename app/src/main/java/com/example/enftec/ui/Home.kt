@@ -7,12 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.example.enftec.MainViewModel
 import com.example.enftec.R
 import com.example.enftec.databinding.HomeFragmentBinding
 
 class Home : Fragment() {
 
+    companion object{
+        fun newInstance() = Home()
+    }
 
+
+    private lateinit var mainViewModel: MainViewModel
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
 
@@ -27,6 +33,7 @@ class Home : Fragment() {
             false
         )
 
+
         setObservables()
         return binding.root
     }
@@ -37,7 +44,10 @@ class Home : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        activity?.run {
+             mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        } ?: throw  Throwable("Invalid activity")
+        mainViewModel.updateActionBarTitle("Tópicos")
 
     }
 
