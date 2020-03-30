@@ -15,6 +15,7 @@ import com.example.enftec.core.MainActivity
 import com.example.enftec.data.TopicAdapter
 import com.example.enftec.databinding.HomeFragmentBinding
 import com.example.enftec.net.auth.AuthViewModel
+import com.example.enftec.net.topics.FirestoreViewModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -45,7 +46,10 @@ class Home : BaseFragment() {
         return binding.root
     }
 
+
+
     private fun setObservables() {
+        val firestoreViewModel = ViewModelProviders.of(this).get(FirestoreViewModel::class.java)
 
         viewModel.itemList.observe(viewLifecycleOwner, Observer { topicList ->
             showTopics(topicList)
@@ -54,7 +58,10 @@ class Home : BaseFragment() {
         loginInDatabase();
 
         binding.btnSetValue.setOnClickListener {
-            // Read from the database
+            firestoreViewModel.getTopics().observe(viewLifecycleOwner, Observer {
+                var allTopics = it
+                Toast.makeText(activity, "values : ${it.toString()})", Toast.LENGTH_SHORT).show()
+            })
         }
     }
 

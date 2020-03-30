@@ -1,7 +1,7 @@
 package com.example.enftec.core
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
@@ -10,6 +10,7 @@ import com.example.enftec.R
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.title.observe(this, Observer { customTitle ->
             supportActionBar?.title = customTitle
         })
+
 
     }
 
