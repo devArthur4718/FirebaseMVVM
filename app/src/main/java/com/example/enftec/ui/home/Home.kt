@@ -1,11 +1,9 @@
 package com.example.enftec.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -14,12 +12,7 @@ import com.example.enftec.core.BaseFragment
 import com.example.enftec.core.MainActivity
 import com.example.enftec.data.TopicAdapter
 import com.example.enftec.databinding.HomeFragmentBinding
-import com.example.enftec.net.auth.AuthViewModel
-import com.example.enftec.net.topics.FirestoreViewModel
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.example.enftec.net.models.Topics
 
 class Home : BaseFragment() {
 
@@ -30,6 +23,7 @@ class Home : BaseFragment() {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,36 +40,26 @@ class Home : BaseFragment() {
         return binding.root
     }
 
-
-
     private fun setObservables() {
-        val firestoreViewModel = ViewModelProviders.of(this).get(FirestoreViewModel::class.java)
-
-        viewModel.itemList.observe(viewLifecycleOwner, Observer { topicList ->
-            showTopics(topicList)
-        })
 
         loginInDatabase();
-
-        binding.btnSetValue.setOnClickListener {
-            firestoreViewModel.getTopics().observe(viewLifecycleOwner, Observer {
-                var allTopics = it
-                Toast.makeText(activity, "values : ${it.toString()})", Toast.LENGTH_SHORT).show()
-            })
-        }
+        viewModel.getTopics().observe(viewLifecycleOwner, Observer { allTopics ->
+            showLoading(true)
+            showTopics(allTopics)
+        })
     }
 
     private fun loginInDatabase() {
-        val firestoreViewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
-        firestoreViewModel.signInWithEmail("devarthur4718@gmail.com",
+        viewModel.signInWithEmail("devarthur4718@gmail.com",
             "12345678",
             (activity as MainActivity))
     }
 
-    private fun showTopics(topicList: List<String>) {
+    private fun showTopics(topicList: List<Topics>) {
         val adapter = TopicAdapter()
         adapter.data = topicList
         binding.rvTopics.adapter = adapter
+        showLoading(false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -7,11 +7,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.enftec.R
 import com.example.enftec.databinding.ItemTopicBinding
+import com.example.enftec.net.models.Topics
 
 //* Created by Arthur Gomes at 09/03/20 21:46 - contact me at devarthur4718@gmail.com.br
 class TopicAdapter: RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
 
-    var data = listOf<String>()
+    var data = listOf<Topics>()
         set(value){
             field = value
             notifyDataSetChanged()
@@ -26,17 +27,17 @@ class TopicAdapter: RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
     override fun getItemCount(): Int  = data.size
 
     override fun onBindViewHolder(holder: TopicAdapter.ViewHolder, position: Int) {
-        val topicItem : String = data[position]
+        val topicItem : Topics = data[position]
         holder.bind(topicItem)
     }
 
     class ViewHolder private constructor(val binding : ItemTopicBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item : String){
-            binding.tvTopic.text = item
+        fun bind(item : Topics){
+            binding.tvTopic.text = item.nome
             binding.itemContainer.setOnClickListener {
-                val bundle = bundleOf("topicArg" to item)
+                val bundle = bundleOf("topicArg" to item.nome)
                 itemView.findNavController().navigate(R.id.action_home2_to_topicDetail, bundle)
             }
         }

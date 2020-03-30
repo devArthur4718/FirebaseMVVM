@@ -3,10 +3,12 @@ package com.example.enftec.core
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.example.enftec.ui.dialog.LoadingDialog
 
 //* Created by Arthur Gomes at 09/03/20 22:55 - contact me at devarthur4718@gmail.com.br
 
 open class BaseFragment : Fragment(){
+    private val loadingDialog by lazy { context?.let { LoadingDialog(it) } }
 
     lateinit var mainViewModel: MainViewModel
 
@@ -20,5 +22,18 @@ open class BaseFragment : Fragment(){
 
     companion object{
         const val TAG = "debugDevArthur"
+    }
+
+    fun showLoading(show: Boolean) {
+        if (show) onStartLoading()
+        else onStopLoading()
+    }
+
+    fun onStartLoading() {
+        if (isAdded) loadingDialog?.show()
+    }
+
+    fun onStopLoading() {
+        if (isAdded) loadingDialog?.dismiss()
     }
 }

@@ -11,7 +11,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,8 +22,6 @@ class MainActivity : AppCompatActivity() {
         viewModel.title.observe(this, Observer { customTitle ->
             supportActionBar?.title = customTitle
         })
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

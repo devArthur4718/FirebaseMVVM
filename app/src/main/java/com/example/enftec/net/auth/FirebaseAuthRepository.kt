@@ -27,7 +27,6 @@ class FirebaseAuthRepository {
 
                     }
 
-                    Toast.makeText(activity, "Auth Success", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(activity, "Authentication failed: ${task.exception?.message}",
                         Toast.LENGTH_SHORT).show()                }
