@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "662848328359",
+    "firebase_url": "https://enftec-base.firebaseio.com",
+    "project_id": "enftec-base",
+    "storage_bucket": "enftec-base.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662848328359:android:05fb777c187a8cd53a8182",
+        "android_client_info": {
+          "package_name": "com.example.enftec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662848328359-v697sco62joqo28nq9gi4jleokglv3pd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS9izS4d0XpmsCdtW8rEMMZoNCU11seIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662848328359-v697sco62joqo28nq9gi4jleokglv3pd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
