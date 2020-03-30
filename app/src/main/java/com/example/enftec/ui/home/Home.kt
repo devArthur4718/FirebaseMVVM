@@ -1,6 +1,7 @@
 package com.example.enftec.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,10 @@ import com.example.enftec.R
 import com.example.enftec.core.BaseFragment
 import com.example.enftec.data.TopicAdapter
 import com.example.enftec.databinding.HomeFragmentBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class Home : BaseFragment() {
 
@@ -38,9 +43,27 @@ class Home : BaseFragment() {
     }
 
     private fun setObservables() {
+        var database = FirebaseDatabase.getInstance()
+        var myRef = database.getReference("message")
         viewModel.itemList.observe(viewLifecycleOwner, Observer { topicList ->
             showTopics(topicList)
         })
+
+        binding.btnSetValue.setOnClickListener {
+            // Read from the database
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                    val value =
+                        dataSnapshot.getValue(String::class.java)!!
+                    Log.d(TAG, "Value is: $value")
+                }
+
+                override fun onCancelled(error: DatabaseError) { // Failed to read value
+                    Log.w(TAG, "Failed to read value.", error.toException())
+                }
+            })
+        }
     }
 
     private fun showTopics(topicList: List<String>) {

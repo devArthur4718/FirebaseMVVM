@@ -17,9 +17,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_topic"
             />
+
+        <Button
+            android:id="@+id/btnSetValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="set value"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 

@@ -17,4 +17,8 @@ open class BaseFragment : Fragment(){
         } ?: throw  Throwable("Invalid activity")
 
     }
+
+    companion object{
+        const val TAG = "debugDevArthur"
+    }
 }
