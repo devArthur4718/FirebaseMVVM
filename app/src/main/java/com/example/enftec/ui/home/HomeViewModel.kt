@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.enftec.core.MainActivity
 import com.example.enftec.net.auth.FirebaseAuthRepository
+import com.example.enftec.net.models.Subtopics
 import com.example.enftec.net.models.Topics
 import com.example.enftec.net.models.Users
 import com.example.enftec.net.topics.FirestoreRepository
@@ -19,6 +20,7 @@ class HomeViewModel : ViewModel() {
 
 
     var allTopics : MutableLiveData<List<Topics>> = MutableLiveData()
+    var allsubTopics : MutableLiveData<List<Subtopics>> = MutableLiveData()
 
     private val _loadingData = MutableLiveData<Boolean>()
     val loadingData : LiveData<Boolean> get() = _loadingData
@@ -43,6 +45,28 @@ class HomeViewModel : ViewModel() {
         _loadingData.value = false
         return allTopics
 
+    }
+
+    fun getSubTopics(selectedId : String): LiveData<List<Subtopics>> {
+
+        firebaseRepository.getSubTopics().whereEqualTo("id",  selectedId).addSnapshotListener(EventListener<QuerySnapshot> { value, e ->
+
+            if (e != null) {
+                Log.d(TAG, "Listen failed.", e)
+                allsubTopics.value = null
+                _loadingData.value = false
+                return@EventListener
+            }
+
+            var subtopicList : MutableList<Subtopics> = mutableListOf()
+            for (doc in value!!) {
+                var item = doc.toObject(Subtopics::class.java)
+                subtopicList.add(item)
+            }
+            allsubTopics.value = subtopicList
+        })
+        _loadingData.value = false
+        return allsubTopics
     }
 
     var authenticatedUserLiveData: LiveData<Users>? = null
