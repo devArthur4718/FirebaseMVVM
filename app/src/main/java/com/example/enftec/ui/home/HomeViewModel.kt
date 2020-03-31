@@ -47,27 +47,6 @@ class HomeViewModel : ViewModel() {
 
     }
 
-    fun getSubTopics(selectedId : String): LiveData<List<Subtopics>> {
-
-        firebaseRepository.getSubTopics().whereEqualTo("id",  selectedId).addSnapshotListener(EventListener<QuerySnapshot> { value, e ->
-
-            if (e != null) {
-                Log.d(TAG, "Listen failed.", e)
-                allsubTopics.value = null
-                _loadingData.value = false
-                return@EventListener
-            }
-
-            var subtopicList : MutableList<Subtopics> = mutableListOf()
-            for (doc in value!!) {
-                var item = doc.toObject(Subtopics::class.java)
-                subtopicList.add(item)
-            }
-            allsubTopics.value = subtopicList
-        })
-        _loadingData.value = false
-        return allsubTopics
-    }
 
     var authenticatedUserLiveData: LiveData<Users>? = null
 

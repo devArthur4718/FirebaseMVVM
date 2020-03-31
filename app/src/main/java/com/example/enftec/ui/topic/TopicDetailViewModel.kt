@@ -12,15 +12,10 @@ class TopicDetailViewModel : ViewModel() {
     private val _navigateToContent = MutableLiveData<Boolean>()
     val navigateToContent : LiveData<Boolean> get() = _navigateToContent
 
-    init {
-        _itemList.postValue(listOf("Inspeção","Percussão", "Análise"))
+
+    fun addSubtopiclist(subTopicsList: ArrayList<String>?) {
+        _itemList.value = subTopicsList
+
     }
 
-    fun navigateToContent(){
-        _navigateToContent.value = true
-    }
-
-    fun doneNavigating(){
-        _navigateToContent.value = false
-    }
 }

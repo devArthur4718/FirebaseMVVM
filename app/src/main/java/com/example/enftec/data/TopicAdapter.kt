@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.enftec.R
 import com.example.enftec.databinding.ItemTopicBinding
 import com.example.enftec.net.models.Topics
+import com.example.enftec.utils.Contanstutils
 
 //* Created by Arthur Gomes at 09/03/20 21:46 - contact me at devarthur4718@gmail.com.br
 class TopicAdapter: RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
@@ -37,7 +38,11 @@ class TopicAdapter: RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
         fun bind(item : Topics){
             binding.tvTopic.text = item.nome
             binding.itemContainer.setOnClickListener {
-                val bundle = bundleOf("topicArg" to item.nome)
+                val bundle = bundleOf(
+                    Contanstutils.ARG_TOPIC to item.nome,
+                    Contanstutils.ARG_SUBTOPIC to item.subtopicos,
+                    Contanstutils.ARG_CONTENT to item.conteudos)
+
                 itemView.findNavController().navigate(R.id.action_home2_to_topicDetail, bundle)
             }
         }

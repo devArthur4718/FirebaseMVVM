@@ -1,8 +1,9 @@
-package com.example.enftec.core
+package com.example.enftec.utils
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.example.enftec.core.MainViewModel
 import com.example.enftec.ui.dialog.LoadingDialog
 
 //* Created by Arthur Gomes at 09/03/20 22:55 - contact me at devarthur4718@gmail.com.br

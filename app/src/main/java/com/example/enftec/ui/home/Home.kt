@@ -1,16 +1,14 @@
 package com.example.enftec.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.enftec.R
-import com.example.enftec.core.BaseFragment
+import com.example.enftec.utils.BaseFragment
 import com.example.enftec.core.MainActivity
 import com.example.enftec.data.TopicAdapter
 import com.example.enftec.databinding.HomeFragmentBinding
@@ -48,10 +46,7 @@ class Home : BaseFragment() {
             showLoading(true)
             showTopics(allTopics)
         })
-        viewModel.getSubTopics("12").observe(viewLifecycleOwner, Observer {allSubTopics ->
-//            Toast.makeText(activity, allSubTopics.toString(), Toast.LENGTH_SHORT).show()
-            Log.d(TAG, allSubTopics.toString())
-        })
+
     }
 
     private fun loginInDatabase() {
