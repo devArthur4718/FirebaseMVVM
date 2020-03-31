@@ -12,7 +12,7 @@ An Android sample project using Viewmodel, Livedata, databinding, Firestore insi
 <a href="https://developer.android.com/topic/libraries/architecture/livedata" target="_blank" rel="noopener noreferrer">Livedata </a>
 
 * Connectinving and data sources with View Model ->
-<a href="https://developer.android.com/topic/libraries/architecture/viewmodel">Livedata </a>
+<a href="https://developer.android.com/topic/libraries/architecture/viewmodel">View Model </a>
 
 * Authentication using ->
 <a href="https://firebase.google.com/docs/auth/?gclid=Cj0KCQjw1Iv0BRDaARIsAGTWD1s_AYJbbZJIIOis5YxJdhwUoue-lFYYhzp2OlXJMz_n_YUo-rf0i2saAqSIEALw_wcB">Firebase Auth </a>
