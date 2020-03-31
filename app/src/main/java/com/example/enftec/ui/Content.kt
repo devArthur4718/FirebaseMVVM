@@ -65,19 +65,6 @@ class Content : BaseFragment() {
 
             binding.webView.loadData(content.replace("replaceContent", contentToLoad!!),"text/html","utf-8" )
 
-//            try {
-//                binding.webView.loadData(
-//                    URLEncoder.encode(
-//                        "<html><body><pre>${content.replace("replaceContent", contentToLoad!!)}</body></html>",
-//                        "utf-8"
-//                    ).replace("\\+", "%20"), "text/html", "utf-8"
-//                )
-//            } catch (uee: UnsupportedEncodingException) {
-//                Log.e("webview", "", uee)
-//            }
-
         })
-
     }
-
 }
