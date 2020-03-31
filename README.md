@@ -8,7 +8,7 @@ An Android sample project using Viewmodel, Livedata, databinding, Firestore insi
 
 # Project contents
 
-* Livedata ->
+* Observing state changes in data using ->
 <a href="https://developer.android.com/topic/libraries/architecture/livedata" target="_blank" rel="noopener noreferrer">Livedata </a>
 
 
